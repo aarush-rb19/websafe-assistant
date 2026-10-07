@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSafe</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <section class="hero-card">
+        <header class="navbar">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span class="brand-name">WebSafe</span>
+          </div>
+        </header>
+
+        <div class="hero-body">
+          <div class="hero-copy">
+            <h1>PASSWORD CHECK</h1>
+            <p>
+              Type a password to see how it holds up. Analysis runs only in your
+              browser—nothing is stored or sent.
+            </p>
+
+            <form id="password-form" class="password-form" autocomplete="off">
+              <label class="sr-only" for="password-input">Password</label>
+              <div class="input-wrapper">
+                <input
+                  id="password-input"
+                  name="password"
+                  type="password"
+                  placeholder="Enter a password"
+                  spellcheck="false"
+                  autocomplete="new-password"
+                />
+                <button type="button" id="toggle-password" class="toggle-password" aria-label="Toggle password visibility">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+              </div>
+              <div class="strength-meter-container">
+                <div class="strength-meter" id="strength-meter"></div>
+              </div>
+            </form>
+
+            <div class="strength-panel" hidden>
+              <p class="strength-label">
+                Overall:
+                <strong id="strength-value">—</strong>
+              </p>
+              <div class="rules-grid">
+                <div class="rules-col fulfilled">
+                  <h2>Rules fulfilled</h2>
+                  <ul id="rules-passed"></ul>
+                </div>
+                <div class="rules-col unmet">
+                  <h2>Rules not fulfilled</h2>
+                  <ul id="rules-failed"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <svg class="scene" viewBox="0 0 720 520" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ff7ad9" />
+                  <stop offset="38%" stop-color="#e14cff" />
+                  <stop offset="100%" stop-color="#6b3dff" />
+                </linearGradient>
+                <clipPath id="wave">
+                  <path d="M90 0 C 210 80, 250 40, 340 90 C 460 160, 500 40, 720 110 L 720 520 L 0 520 L 0 0 Z" />
+                </clipPath>
+              </defs>
+              <g clip-path="url(#wave)">
+                <rect width="720" height="520" fill="url(#sky)" />
+                <g fill="#fff" opacity="0.85">
+                  <circle cx="430" cy="70" r="1.6" />
+                  <circle cx="470" cy="40" r="1.2" />
+                  <circle cx="510" cy="95" r="1.4" />
+                  <circle cx="560" cy="55" r="1.1" />
+                  <circle cx="600" cy="110" r="1.5" />
+                  <circle cx="640" cy="35" r="1.2" />
+                  <circle cx="680" cy="80" r="1.3" />
+                  <circle cx="400" cy="120" r="1" />
+                  <circle cx="540" cy="150" r="1.2" />
+                  <circle cx="490" cy="175" r="0.9" />
+                </g>
+                <circle cx="455" cy="168" r="28" fill="#ffe08a" />
+                <path d="M180 250 C 250 190, 320 210, 380 230 C 430 248, 470 210, 530 230 L 530 360 L 180 360 Z" fill="#c45dff" />
+                <path d="M300 270 C 370 210, 430 230, 500 255 C 560 276, 610 230, 720 250 L 720 400 L 300 400 Z" fill="#9d4dff" />
+                <path d="M80 310 C 180 250, 260 280, 360 300 C 470 325, 560 270, 720 310 L 720 430 L 80 430 Z" fill="#6f3dff" />
+                <path d="M0 360 C 140 300, 250 340, 380 355 C 520 372, 620 320, 720 355 L 720 520 L 0 520 Z" fill="#3d2bb8" />
+                <path d="M0 410 C 160 360, 300 400, 460 405 C 580 410, 660 370, 720 400 L 720 520 L 0 520 Z" fill="#2a1a86" />
+                <g fill="#1a0d5c">
+                  <polygon points="620,250 655,430 585,430" />
+                  <polygon points="670,220 710,430 630,430" />
+                  <polygon points="545,290 575,430 515,430" />
+                  <polygon points="140,300 175,470 100,470" />
+                </g>
+              </g>
+            </svg>
+            <svg class="left-tree" viewBox="0 0 80 140" aria-hidden="true">
+              <polygon points="40,0 72,70 8,70" fill="#2a1a86" />
+              <polygon points="40,30 78,110 2,110" fill="#241678" />
+              <polygon points="40,60 80,140 0,140" fill="#1a0d5c" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+            <section class="quiz-section" id="quiz-section">
+        <div class="quiz-card">
+          <h2>Quick Security Check</h2>
+          <div class="quiz-questions">
+            <div class="quiz-q">
+              <p>1. Do you use the same password across multiple accounts?</p>
+              <div class="radio-group">
+                <label><input type="radio" name="q1" value="yes"> Yes</label>
+                <label><input type="radio" name="q1" value="no"> No</label>
+              </div>
+            </div>
+            <div class="quiz-q">
+              <p>2. Have you enabled Multi-Factor Authentication (MFA) on your important accounts?</p>
+              <div class="radio-group">
+                <label><input type="radio" name="q2" value="yes"> Yes</label>
+                <label><input type="radio" name="q2" value="no"> No</label>
+              </div>
+            </div>
+            <div class="quiz-q">
+              <p>3. Do you lock your devices with a PIN or password?</p>
+              <div class="radio-group">
+                <label><input type="radio" name="q3" value="yes"> Yes</label>
+                <label><input type="radio" name="q3" value="no"> No</label>
+              </div>
+            </div>
+          </div>
+          <button id="calc-score-btn" class="action-btn">Get My Score</button>
+          <div id="quiz-result" class="quiz-result" hidden></div>
+        </div>
+      </section>
+
+      <section class="practices" id="practices">
+        <h2>Stay safer online</h2>
+        <p class="practices-intro">
+          Habits that protect accounts, devices, and personal data.
+        </p>
+        
+        <div class="progress-wrapper">
+          <div class="progress-header">
+            <span>Your Security Habit Progress</span>
+            <span id="progress-text">0%</span>
+          </div>
+          <div class="global-progress">
+            <div class="global-progress-bar" id="global-progress-bar"></div>
+          </div>
+        </div>
+
+        <div class="accordion" id="practices-accordion">
+          <div class="accordion-item" data-category="password">
+            <button class="accordion-header" aria-expanded="false">
+              <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
+              <h3>Password security</h3>
+              <span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>A strong password is unique, long, and never reused. Treat every account as if a leak on one site could open the rest.</p>
+                <ul class="checklist">
+                  <li><label><input type="checkbox" class="habit-check"> <span>Use a password manager to generate and store secrets.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Aim for 12+ characters or a 4–6 word passphrase.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Never reuse passwords, even for “unimportant” sites.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Change a password immediately after a <a href="https://haveibeenpwned.com/" target="_blank" rel="noopener noreferrer">breach notice</a>.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Do not share passwords in chat, email, or screenshots.</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" data-category="mfa">
+            <button class="accordion-header" aria-expanded="false">
+              <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+              <h3>Multi-factor authentication</h3>
+              <span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>MFA adds a second check after your password so a stolen secret is often not enough to get in.</p>
+                <ul class="checklist">
+                  <li><label><input type="checkbox" class="habit-check"> <span>Turn MFA on for email, banking, work, and social apps.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Prefer an <a href="https://authy.com/" target="_blank" rel="noopener noreferrer">authenticator app</a> or hardware key over SMS.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Save backup codes in a safe place, not in your inbox.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Watch for MFA prompt fatigue: deny unexpected requests.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Keep recovery phone and email current so you are not locked out.</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" data-category="device">
+            <button class="accordion-header" aria-expanded="false">
+              <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></span>
+              <h3>Device security</h3>
+              <span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Your phone and laptop hold sessions, files, and saved logins. Locking them down closes a wide path into your accounts.</p>
+                <ul class="checklist">
+                  <li><label><input type="checkbox" class="habit-check"> <span>Install OS and app updates; they patch known holes.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Use a PIN, password, or biometrics on every device.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Enable full-disk encryption and Find My / remote wipe.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Avoid unknown USBs and public charging cables.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Skip jailbreaks/rooting and untrusted app stores.</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" data-category="privacy">
+            <button class="accordion-header" aria-expanded="false">
+              <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+              <h3>Privacy settings</h3>
+              <span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Default settings often share more than you intend. Review who can see your data and which apps can use it.</p>
+                <ul class="checklist">
+                  <li><label><input type="checkbox" class="habit-check"> <span>Limit location, contacts, camera, and microphone access.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Turn off unused ad tracking and personalized ads.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Set profiles and posts to friends-only where it fits.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Hide your email/phone from public search on accounts.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Review connected apps and revoke ones you no longer use.</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" data-category="social">
+            <button class="accordion-header" aria-expanded="false">
+              <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+              <h3>Social media safety</h3>
+              <span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Public posts are a map for scammers: job titles, travel, family, and photos can be used to impersonate or guess answers.</p>
+                <ul class="checklist">
+                  <li><label><input type="checkbox" class="habit-check"> <span>Pause before posting location, tickets, or ID photos.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Ignore unexpected DMs, QR codes, and “verify now” links.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Turn off face tagging and unused location tagging.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Use unique passwords + MFA on every social account.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Report impersonation profiles and warn people you know.</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" data-category="account">
+            <button class="accordion-header" aria-expanded="false">
+              <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg></span>
+              <h3>Account protection</h3>
+              <span class="accordion-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">
+                <p>Lock down recovery paths and watch for signs someone else is trying to take over your identity.</p>
+                <ul class="checklist">
+                  <li><label><input type="checkbox" class="habit-check"> <span>Turn on login alerts and review recent sessions often.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Sign out of unused devices and old browsers.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Never enter credentials from unsolicited mail or texts.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Close or recover accounts you no longer use.</span></label></li>
+                  <li><label><input type="checkbox" class="habit-check"> <span>Keep a recovery plan: backup codes, second email, keys.</span></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="site-footer">
+      <p>stay safe, have fun 🛡️✨😎</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
